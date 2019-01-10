@@ -10,6 +10,7 @@ namespace CocktailMVC.Controllers
     {
         public ActionResult Index()
         {
+
             return View();
         }
 

@@ -1,0 +1,43 @@
+namespace CocktailMVC.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class AddCocktailAndThemeTables : DbMigration
+    {
+        public override void Up()
+        {
+            CreateTable(
+                "dbo.Cocktails",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Description = c.String(),
+                        ThemeId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Themes", t => t.ThemeId, cascadeDelete: true)
+                .Index(t => t.ThemeId);
+            
+            CreateTable(
+                "dbo.Themes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+        }
+        
+        public override void Down()
+        {
+            DropForeignKey("dbo.Cocktails", "ThemeId", "dbo.Themes");
+            DropIndex("dbo.Cocktails", new[] { "ThemeId" });
+            DropTable("dbo.Themes");
+            DropTable("dbo.Cocktails");
+        }
+    }
+}

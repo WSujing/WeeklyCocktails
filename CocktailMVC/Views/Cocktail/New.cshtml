@@ -1,0 +1,39 @@
+﻿@model CocktailMVC.Models.CocktailViewModel
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>@Model.Title</h2>
+
+@using (Html.BeginForm("Save", "Cocktail"))
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.Name)
+        @Html.TextBoxFor(c => c.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Price)
+        @Html.TextBoxFor(c => c.Price, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Price)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.ThemeId)
+        @Html.DropDownListFor(c => c.ThemeId, new SelectList(Model.Themes, "Id", "Name"), new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.ThemeId)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(c => c.Description)
+        @Html.TextAreaFor(c => c.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.Description)
+    </div>
+    @Html.HiddenFor(c => c.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts
+{
+   @Scripts.Render("~/bundles/jqueryval")
+}
+
+

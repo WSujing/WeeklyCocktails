@@ -29,5 +29,8 @@ namespace CocktailMVC.Models
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Cocktail> Cocktails { get; set; }
+        public DbSet<Theme> Themes { get; set; }
+
     }
 }

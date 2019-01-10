@@ -69,6 +69,7 @@ namespace CocktailMVC.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Cocktail");
+
         }
     }
 }

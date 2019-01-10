@@ -69,7 +69,16 @@ namespace CocktailMVC.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Cocktail");
+        }
 
+        public ActionResult Delete(int id)
+        {
+            var cocktail = _context.Cocktails.SingleOrDefault(c => c.Id == id);
+
+            _context.Cocktails.Remove(cocktail);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Cocktail");
         }
     }
 }

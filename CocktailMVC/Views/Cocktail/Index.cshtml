@@ -26,9 +26,7 @@
                 <td>@coctail.Price kr</td>
                 <td>@coctail.Theme.Name</td>
                 <td>@coctail.Description</td>
-                <td>
-                    <button class="btn-link">Delete</button>
-                </td>
+                <td>@Html.ActionLink("Delete", "Delete", "Cocktail", new { id = coctail.Id}, new { @class = "btn btn-link"})</td>
             </tr>
         }
     </tbody>

@@ -31,7 +31,7 @@ namespace CocktailMVC.Api
         // /api/Cocktail/1
         public IHttpActionResult GetCocktail(int id)
         {
-            var cocktail = _context.Cocktails.Include(c => c.Theme).Single(c => c.Id == id);
+            var cocktail = _context.Cocktails.Include(c => c.Theme).SingleOrDefault(c => c.Id == id);
 
             if (cocktail == null)
                 return NotFound();
@@ -47,9 +47,44 @@ namespace CocktailMVC.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var newCocktail = Mapper.Map<CocktailForPostDto, Cocktail>(cocktailDto);
+            var cocktail = Mapper.Map<CocktailForPostDto, Cocktail>(cocktailDto);
+            _context.Cocktails.Add(cocktail);
+            _context.SaveChanges();
 
-            return null;
+            var createdCocktailDto = Mapper.Map<Cocktail, CocktailDto>(cocktail);
+
+            return Created(new Uri(Request.RequestUri + "/" + createdCocktailDto.Id), createdCocktailDto);
+        }
+
+        [HttpPut]
+        public IHttpActionResult PutCocktail(int id, CocktailDto cocktailDto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            var cocktail = _context.Cocktails.SingleOrDefault(c => c.Id == id);
+
+            if (cocktail == null)
+                return NotFound();
+
+            Mapper.Map<CocktailDto, Cocktail>(cocktailDto, cocktail);
+            _context.SaveChanges();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeteleCocktail(int id)
+        {
+            var cocktail = _context.Cocktails.SingleOrDefault(c => c.Id == id);
+
+            if (cocktail == null)
+                return NotFound();
+
+            _context.Cocktails.Remove(cocktail);
+            _context.SaveChanges();
+
+            return Ok();
         }
     }
 }

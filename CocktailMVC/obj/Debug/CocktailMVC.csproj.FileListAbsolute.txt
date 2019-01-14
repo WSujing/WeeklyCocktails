@@ -135,3 +135,4 @@ C:\MVC\CocktailMVC\CocktailMVC\bin\System.Net.Http.Formatting.xml
 C:\MVC\CocktailMVC\CocktailMVC\bin\System.ValueTuple.xml
 C:\MVC\CocktailMVC\CocktailMVC\bin\System.Web.Http.xml
 C:\MVC\CocktailMVC\CocktailMVC\bin\System.Web.Http.WebHost.xml
+C:\MVC\CocktailMVC\CocktailMVC\obj\Debug\CocktailMVC.Migrations.SeedUsers.resources

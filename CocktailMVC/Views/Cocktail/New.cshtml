@@ -19,7 +19,7 @@
     </div>
     <div class="form-group">
         @Html.LabelFor(c => c.ThemeId)
-        @Html.DropDownListFor(c => c.ThemeId, new SelectList(Model.Themes, "Id", "Name"), new { @class = "form-control" })
+        @Html.DropDownListFor(c => c.ThemeId, new SelectList(Model.Themes, "Id", "Name"),"Select Cocktail", new { @class = "form-control" })
         @Html.ValidationMessageFor(c => c.ThemeId)
     </div>
     <div class="form-group">

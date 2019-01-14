@@ -16,7 +16,7 @@ namespace CocktailMVC.Models
 
         [Required]
         [Range(1.00, 299.00)]
-        public decimal Price { get; set; }
+        public decimal? Price { get; set; }
 
         [Required]
         [StringLength(500)]
@@ -24,7 +24,7 @@ namespace CocktailMVC.Models
 
         [Required]
         [Display(Name = "Theme")]
-        public int ThemeId { get; set; }
+        public int? ThemeId { get; set; }
 
 
         public IEnumerable<Theme> Themes { get; set; }

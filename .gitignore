@@ -2,4 +2,6 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
+
 /.vs/CocktailMVC/v15/Server/sqlite3
+/CocktailMVC/App_Data

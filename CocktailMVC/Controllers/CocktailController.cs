@@ -95,6 +95,9 @@ namespace CocktailMVC.Controllers
         {
             var cocktail = _context.Cocktails.Include(c => c.Theme).SingleOrDefault(c => c.Id == id);
 
+            if (cocktail == null)
+                return HttpNotFound();
+
             return View(cocktail);
         }
     }

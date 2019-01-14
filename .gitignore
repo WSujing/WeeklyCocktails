@@ -5,3 +5,6 @@
 
 /.vs/CocktailMVC/v15/Server/sqlite3
 /CocktailMVC/App_Data
+
+*.mdf
+*.ldf

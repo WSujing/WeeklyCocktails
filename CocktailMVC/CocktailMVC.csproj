@@ -323,6 +323,7 @@
     <Content Include="Views\Cocktail\Index.cshtml" />
     <Content Include="Views\Cocktail\New.cshtml" />
     <Content Include="Views\Cocktail\IndexReadOnly.cshtml" />
+    <Content Include="Views\Cocktail\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

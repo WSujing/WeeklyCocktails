@@ -90,5 +90,12 @@ namespace CocktailMVC.Controllers
 
             return RedirectToAction("Index", "Cocktail");
         }
+
+        public ActionResult Detail(int id)
+        {
+            var cocktail = _context.Cocktails.Include(c => c.Theme).SingleOrDefault(c => c.Id == id);
+
+            return View(cocktail);
+        }
     }
 }
